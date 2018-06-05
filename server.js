@@ -11,7 +11,7 @@ var Produto = require('./app/models/produto')
 mongooge.connect('mongodb://node-api:samuel123@ds247690.mlab.com:47690/node-api')
 
 //Configuração da variável app para usar o body-parser
-app.use(bodyParser.urlencoded({extend: true}))
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 //Definido porta para a execuçao da api
@@ -44,7 +44,10 @@ router.route('/produtos')
 
         //Setar campos do produto
         produto.nome = req.body.nome
+        produto.marca = req.body.marca
+        produto.tipo  = req.body.tipo
         produto.preco = req.body.preco
+        produto.quantidade = req.body.quantidade
         produto.descricao = req.body.descricao
 
         produto.save(function(err) {
@@ -68,7 +71,7 @@ router.route('/produtos')
     //Rota produtos/:produto_id (GET POST & DELETE)
     router.route('/produtos/:produto_id')
     
-    //Selecionar por id
+    //Selecionar por id (GET)
     .get(function(req, res) {
         Produto.findById(req.params.produto_id, function(err, produto) {
             if(err) {
@@ -84,8 +87,35 @@ router.route('/produtos')
             if(err) {
                 res.send('Id do produto não encontrado: ' + err)
             }
+
+            produto.nome = req.body.nome
+            produto.marca = req.body.marca
+            produto.tipo  = req.body.tipo
+            produto.preco = req.body.preco
+            produto.quantidade = req.body.quantidade
+            produto.descricao = req.body    .descricao
+
+            produto.save(function(err) {
+                if(err) {
+                    res.send('Erro ao atualizar o produto: ' + err)
+                }
+                res.send({message: 'Produto atualizado com sucesso!'})
+            })
         })
-    })    
+    })
+    
+    //Rota produtos/:produto_id  deletar por id (DELETE)
+    .delete(function(req, res) {
+        Produto.remove({
+            _id: req.params.produto_id
+            },function(err) {
+                if(err) {
+                    res.send('Id do produto não encontrado: ' + err)
+                }
+                res.json({message: 'Produto excluído com sucesso'})
+            }
+        )
+    })
 
 //Definido o padrão das rota prefixxadas com '/api'
 app.use('/api', router)
