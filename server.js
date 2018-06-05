@@ -3,6 +3,7 @@
 //chamada dos pacotes
 var express = require('express')
 var app = express()
+const path = require('path')
 var bodyParser = require('body-parser')
 var mongooge = require('mongoose')
 var Produto = require('./app/models/produto')
@@ -12,7 +13,12 @@ mongooge.connect('mongodb://node-api:samuel123@ds247690.mlab.com:47690/node-api'
 
 //Configuração da variável app para usar o body-parser
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
+
+app.use(express.static('./public'))
+
+app.set('views', path.join(__dirname, './public'))
+app.set('view engine', 'ejs')
 
 //Definido porta para a execuçao da api
 var port = process.env.port || 8000
@@ -64,7 +70,8 @@ router.route('/produtos')
             if(err) {
                 res.send('Erro ao tentar selecionar todos os produtos: ' + err)
             }
-            res.json(produtos)
+            // res.json(produtos)
+            res.render('produto', {produtos})
         })
     })
 
