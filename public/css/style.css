@@ -58,8 +58,8 @@ h2 {
   overflow: auto;
 } */
 
-.button-addUser{
-  background: transparent url(img/add-icon.png) no-repeat;
+.button-add{
+  background: transparent url(/images/add.png) no-repeat;
   background-size: 100%; 
   padding: .5em 1em;
   margin-left: 2px;
@@ -76,13 +76,13 @@ h2 {
 }
 
 .button-edit {
-  background: transparent url(img/edit-icon.png) no-repeat;
+  background: transparent url(/images/edit.png) no-repeat;
   background-size: 100%;
   padding: .5em 1em;
 }
 
 .button-delete {
-  background: transparent url(img/delete-icon.png) no-repeat;
+  background: transparent url(/images/delete.png) no-repeat;
   background-size: 100%;
   padding: .5em 1em;
 }

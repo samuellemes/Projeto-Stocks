@@ -10,13 +10,13 @@
   
   <link rel="stylesheet" href="../css/style.css">
 
-  <title>USERS</title>
+  <title>Produtos</title>
 </head>
 
 <body>
   <section class="container">
     
-    <h2>LIST OF USERS</h2>
+    <h2>Lista de Produtos</h2>
     
     <div class="scroll-table">
       <table class="order-table">
@@ -28,6 +28,7 @@
             <th>Preço</th>
             <th>Quantidade</th>
             <th>Descrição</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -39,8 +40,10 @@
                 <td><%= produtos.preco %></td>
                 <td><%= produtos.quantidade %></td>
                 <td><%= produtos.descricao %></td>
-                <td><a class="button-edit" href="/api/edit/<%= produtos._id %>"></a></td>
-                <td><a class="button-delete" href="/api/delete/<%= produtos._id %>" onclick="return confirm('Tem certeza que deseja excluir?');"></a></td>
+                <td>
+                  <a class="button-edit" href="/api/produtos/<%= produtos._id %>"></a>
+                  <a class="button-delete" href="/api/produtos/<%= produtos._id %>" onclick="return confirm('Tem certeza que deseja excluir?');"></a>
+                </td>
               </tr>
           <% }) %>
         </tbody>
@@ -48,7 +51,7 @@
     </div>
     <div class="add">
       ADD PRODUTO:
-      <a class="button-addUser" name="Add user" href="/api/add"></a>
+      <a class="button-add" href="/api/produtos"></a>
     </div>
   </section>
     </body>
