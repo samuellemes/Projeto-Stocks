@@ -1,13 +1,13 @@
 //Modelo da classe produto
 
 var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+var schema = mongoose.Schema
 
 //Produto
-var produtoSchema = new Schema({
+var produtoSchema = new schema({
     nome: String,
     preco: Number,
     descricao: String
 })
 
-module.exports = mongoose.model('Produto', produtoSchema)
+module.exports = mongoose.model('produto', produtoSchema)
