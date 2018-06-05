@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Projeto Engenharia de Software 3",
   "main": "server.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/samuellemes/Projeto-Stocks.git"
@@ -18,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/samuellemes/Projeto-Stocks/issues"
   },
-  "homepage": "https://github.com/samuellemes/Projeto-Stocks#readme"
+  "homepage": "https://github.com/samuellemes/Projeto-Stocks#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
 }
